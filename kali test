@@ -1,0 +1,559 @@
+┌──(kali㉿kali)-[~]
+└─$ >....                                                                    
+        IPv6Network('::ffff:0:0/96'),
+        IPv6Network('100::/64'),
+        IPv6Network('2001::/23'),
+        IPv6Network('2001:2::/48'),
+        IPv6Network('2001:db8::/32'),
+        IPv6Network('2001:10::/28'),
+        IPv6Network('fc00::/7'),
+        IPv6Network('fe80::/10'),
+        ]
+
+    _reserved_networks = [
+        IPv6Network('::/8'), IPv6Network('100::/8'),
+        IPv6Network('200::/7'), IPv6Network('400::/6'),
+        IPv6Network('800::/5'), IPv6Network('1000::/4'),
+        IPv6Network('4000::/3'), IPv6Network('6000::/3'),
+        IPv6Network('8000::/3'), IPv6Network('A000::/3'),
+        IPv6Network('C000::/3'), IPv6Network('E000::/4'),
+        IPv6Network('F000::/5'), IPv6Network('F800::/6'),
+        IPv6Network('FE00::/9'),
+    ]
+
+    _sitelocal_network = IPv6Network('fec0::/10')
+
+
+IPv6Address._constants = _IPv6Constants
+
+zsh: parse error near `)'                                                                                                                                                                   
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ 
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ 
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ 
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ 
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ 
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ 
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ 
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ >....                                                                                                                                                                                   
+def validate_input(cidr_input):
+    """
+    Validate user input - IP Address CIDR format
+    """
+    hosts = []
+    try:
+        hosts = list(ip_network(cidr_input).hosts())
+    except:
+        print('Invalid input! A valid CIDR IP range example: 192.168.0.0/24')
+        return None
+
+    return hosts
+
+if __name__ == '__main__':
+    """
+    This is where the application is first called
+    """
+    util = UTILITIES()
+
+    # print Banner
+    print("Welcome To Pentest Robot")
+    print(util.seperator_line())
+    print("Enter a single IP or Range in CIDR format (e.g. 192.168.0.0/24):")
+
+    # user input
+    cidr_input = input("IP/CIDR>")
+    hosts = validate_input(cidr_input)
+
+    #if the CIDR value is valid
+    if (hosts != None):
+        print("\n[i] Checking for Live Hosts...")
+        LIVE_HOSTS = []
+        for host in hosts:
+            scanner = HostScan(host)
+            if (scanner.is_host_live()):
+                LIVE_HOSTS.append(host)
+
+        print("\n")
+        #if we have live hosts
+        if (len(LIVE_HOSTS) > 0):
+            for live_host in LIVE_HOSTS:
+                scanner_live_hosts = HostScan(live_host)
+                port_scan_results = scanner_live_hosts.port_scan()
+                parsed_nmap_results = scanner_live_hosts.parse_nmap_output(port_scan_results)
+                enum = EnumerateHost(parsed_nmap_results, live_host)
+                enum.start()
+                print(util.seperator_line())
+        else:
+            print("[!] No live hosts to scan")
+
+    print ("\n[*] Pentest Robot Finished The Execution!")
+
+zsh: parse error near `elif'
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ 
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ 
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ 
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ 
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ >....                                                                                                                                                                                   
+def validate_input(cidr_input):
+    """
+    Validate user input - IP Address CIDR format
+    """
+    hosts = []
+    try:
+        hosts = list(ip_network(cidr_input).hosts())
+    except:
+        print('Invalid input! A valid CIDR IP range example: 192.168.0.0/24')
+        return None
+
+    return hosts
+
+if __name__ == '__main__':
+    """
+    This is where the application is first called
+    """
+    util = UTILITIES()
+
+    # print Banner
+    print("Welcome To Pentest Robot")
+    print(util.seperator_line())
+    print("Enter a single IP or Range in CIDR format (e.g. 192.168.0.0/24):")
+
+    # user input
+    cidr_input = input("IP/CIDR>")
+    hosts = validate_input(cidr_input)
+
+    #if the CIDR value is valid
+    if (hosts != None):
+        print("\n[i] Checking for Live Hosts...")
+        LIVE_HOSTS = []
+        for host in hosts:
+            scanner = HostScan(host)
+            if (scanner.is_host_live()):
+                LIVE_HOSTS.append(host)
+
+        print("\n")
+        #if we have live hosts
+        if (len(LIVE_HOSTS) > 0):
+            for live_host in LIVE_HOSTS:
+                scanner_live_hosts = HostScan(live_host)
+                port_scan_results = scanner_live_hosts.port_scan()
+                parsed_nmap_results = scanner_live_hosts.parse_nmap_output(port_scan_results)
+                enum = EnumerateHost(parsed_nmap_results, live_host)
+                enum.start()
+                print(util.seperator_line())
+        else:
+            print("[!] No live hosts to scan")
+
+    print ("\n[*] Pentest Robot Finished The Execution!")
+
+zsh: parse error near `elif'
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ 
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ 
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ 
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ 
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ 
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ 
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ 
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ 
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ 
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ >....                                                                                                                                                                                   
+
+    @property
+    def is_site_local(self):
+        """Test if the address is reserved for site-local.
+
+        Note that the site-local address space has been deprecated by RFC 3879.
+        Use is_private to test if this address is in the space of unique local
+        addresses as defined by RFC 4193.
+
+        Returns:
+            A boolean, True if the address is reserved per RFC 3513 2.5.6.
+
+        """
+        return (self.network_address.is_site_local and
+                self.broadcast_address.is_site_local)
+
+
+class _IPv6Constants:
+
+    _linklocal_network = IPv6Network('fe80::/10')
+
+    _multicast_network = IPv6Network('ff00::/8')
+
+    _private_networks = [
+        IPv6Network('::1/128'),
+        IPv6Network('::/128'),
+        IPv6Network('::ffff:0:0/96'),
+        IPv6Network('100::/64'),
+        IPv6Network('2001::/23'),
+        IPv6Network('2001:2::/48'),
+        IPv6Network('2001:db8::/32'),
+        IPv6Network('2001:10::/28'),
+        IPv6Network('fc00::/7'),
+        IPv6Network('fe80::/10'),
+        ]
+
+    _reserved_networks = [
+        IPv6Network('::/8'), IPv6Network('100::/8'),
+        IPv6Network('200::/7'), IPv6Network('400::/6'),
+        IPv6Network('800::/5'), IPv6Network('1000::/4'),
+        IPv6Network('4000::/3'), IPv6Network('6000::/3'),
+        IPv6Network('8000::/3'), IPv6Network('A000::/3'),
+        IPv6Network('C000::/3'), IPv6Network('E000::/4'),
+        IPv6Network('F000::/5'), IPv6Network('F800::/6'),
+        IPv6Network('FE00::/9'),
+    ]
+
+    _sitelocal_network = IPv6Network('fec0::/10')
+
+
+IPv6Address._constants = _IPv6Constants
+
+zsh: parse error near `)'
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ 
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ 
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ 
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ 
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ 
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ 
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ 
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ 
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ 
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ 
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ >....                                                                                                                                                                                   
+
+    @property
+    def is_site_local(self):
+        """Test if the address is reserved for site-local.
+
+        Note that the site-local address space has been deprecated by RFC 3879.
+        Use is_private to test if this address is in the space of unique local
+        addresses as defined by RFC 4193.
+
+        Returns:
+            A boolean, True if the address is reserved per RFC 3513 2.5.6.
+
+        """
+        return (self.network_address.is_site_local and
+                self.broadcast_address.is_site_local)
+
+
+class _IPv6Constants:
+
+    _linklocal_network = IPv6Network('fe80::/10')
+
+    _multicast_network = IPv6Network('ff00::/8')
+
+    _private_networks = [
+        IPv6Network('::1/128'),
+        IPv6Network('::/128'),
+        IPv6Network('::ffff:0:0/96'),
+        IPv6Network('100::/64'),
+        IPv6Network('2001::/23'),
+        IPv6Network('2001:2::/48'),
+        IPv6Network('2001:db8::/32'),
+        IPv6Network('2001:10::/28'),
+        IPv6Network('fc00::/7'),
+        IPv6Network('fe80::/10'),
+        ]
+
+    _reserved_networks = [
+        IPv6Network('::/8'), IPv6Network('100::/8'),
+        IPv6Network('200::/7'), IPv6Network('400::/6'),
+        IPv6Network('800::/5'), IPv6Network('1000::/4'),
+        IPv6Network('4000::/3'), IPv6Network('6000::/3'),
+        IPv6Network('8000::/3'), IPv6Network('A000::/3'),
+        IPv6Network('C000::/3'), IPv6Network('E000::/4'),
+        IPv6Network('F000::/5'), IPv6Network('F800::/6'),
+        IPv6Network('FE00::/9'),
+    ]
+
+    _sitelocal_network = IPv6Network('fec0::/10')
+
+
+IPv6Address._constants = _IPv6Constants
+
+zsh: parse error near `)'
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ 
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ 
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ 
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ 
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ 
+                                                                                                                                                                                            
+┌──(kali㉿kali)-[~]
+└─$ sudo su
+[sudo] password for kali: 
+┌──(root㉿kali)-[/home/kali]
+└─# $ apt install python3-pip
+$: command not found
+                                                                                                                                                                                            
+┌──(root㉿kali)-[/home/kali]
+└─# sudo $ apt install python3-pip
+sudo: $: command not found
+                                                                                                                                                                                            
+┌──(root㉿kali)-[/home/kali]
+└─# sudo apt install python3-pip  
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+python3-pip is already the newest version (23.2+dfsg-1).
+0 upgraded, 0 newly installed, 0 to remove and 1855 not upgraded.
+                                                                                                                                                                                            
+┌──(root㉿kali)-[/home/kali]
+└─# 
+└─# $ apt install python3-pip
+$: command not found
+ 
+
+┌──(root㉿kali)-[/home/kali]      
+└─# sudo $ apt install python3-pip
+sudo: $: command not found
+ 
+
+┌──(root㉿kali)-[/home/kali]      
+└─# sudo apt install python3-pip  
+Reading package lists... Done   
+Building dependency tree... Done 
+Reading state information... Done                       
+python3-pip is already the newest version (23.2+dfsg-1).         
+0 upgraded, 0 newly installed, 0 to remove and 1855 not upgraded.
+ 
+
+┌──(root㉿kali)-[/home/kali]
+└─#
+
+└─#: command not found
+$:: command not found
+zsh: no such file or directory: ┌──(root㉿kali)-[/home/kali]
+└─#: command not found
+Command 'sudo:' not found, did you mean:
+  command 'sudo' from deb sudo
+  command 'sudo' from deb sudo-ldap
+Try: apt install <deb name>
+zsh: no such file or directory: ┌──(root㉿kali)-[/home/kali]
+└─#: command not found
+Reading: command not found
+Building: command not found
+Reading: command not found
+Command 'python3-pip' not found, did you mean:
+  command 'python3-pie' from deb python3-nopie
+Try: apt install <deb name>
+0: command not found
+zsh: no such file or directory: ┌──(root㉿kali)-[/home/kali]
+└─#: command not found
+                                                                                                                                                                                            
+┌──(root㉿kali)-[/home/kali]
+└─# pip3 install yapf
+Collecting yapf
+  Obtaining dependency information for yapf from https://files.pythonhosted.org/packages/23/75/c374517c09e31bf22d3b3f156d73e0f38d08e29b2afdd607cef5f1e10aa9/yapf-0.40.1-py3-none-any.whl.metadata
+  Downloading yapf-0.40.1-py3-none-any.whl.metadata (35 kB)
+Collecting importlib-metadata>=6.6.0 (from yapf)
+  Obtaining dependency information for importlib-metadata>=6.6.0 from https://files.pythonhosted.org/packages/cc/37/db7ba97e676af155f5fcb1a35466f446eadc9104e25b83366e8088c9c926/importlib_metadata-6.8.0-py3-none-any.whl.metadata
+  Downloading importlib_metadata-6.8.0-py3-none-any.whl.metadata (5.1 kB)
+Collecting platformdirs>=3.5.1 (from yapf)
+  Obtaining dependency information for platformdirs>=3.5.1 from https://files.pythonhosted.org/packages/14/51/fe5a0d6ea589f0d4a1b97824fb518962ad48b27cd346dcdfa2405187997a/platformdirs-3.10.0-py3-none-any.whl.metadata
+  Downloading platformdirs-3.10.0-py3-none-any.whl.metadata (11 kB)
+Collecting tomli>=2.0.1 (from yapf)
+  Downloading tomli-2.0.1-py3-none-any.whl (12 kB)
+Requirement already satisfied: zipp>=0.5 in /usr/lib/python3/dist-packages (from importlib-metadata>=6.6.0->yapf) (1.0.0)
+Downloading yapf-0.40.1-py3-none-any.whl (250 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 250.3/250.3 kB 876.6 kB/s eta 0:00:00
+Downloading importlib_metadata-6.8.0-py3-none-any.whl (22 kB)
+Downloading platformdirs-3.10.0-py3-none-any.whl (17 kB)
+DEPRECATION: flatbuffers 1.12.1-git20200711.33e2d80-dfsg1-0.6 has a non-standard version number. pip 23.3 will enforce this behaviour change. A possible replacement is to upgrade to a newer version of flatbuffers or contact the author to suggest that they release a version with a conforming version number. Discussion can be found at https://github.com/pypa/pip/issues/12063 
+DEPRECATION: gpg 1.16.0-unknown has a non-standard version number. pip 23.3 will enforce this behaviour change. A possible replacement is to upgrade to a newer version of gpg or contact the author to suggest that they release a version with a conforming version number. Discussion can be found at https://github.com/pypa/pip/issues/12063                                       
+DEPRECATION: wfuzz 3.1.0 has a non-standard dependency specifier pyparsing>=2.4*. pip 23.3 will enforce this behaviour change. A possible replacement is to upgrade to a newer version of wfuzz or contact the author to suggest that they release a version with a conforming dependency specifiers. Discussion can be found at https://github.com/pypa/pip/issues/12063               
+Installing collected packages: tomli, platformdirs, importlib-metadata, yapf                                                                                                                
+  Attempting uninstall: importlib-metadata
+    Found existing installation: importlib-metadata 4.6.4
+    Not uninstalling importlib-metadata at /usr/lib/python3/dist-packages, outside environment /usr
+    Can't uninstall 'importlib-metadata'. No files were found to uninstall.
+Successfully installed importlib-metadata-6.8.0 platformdirs-3.10.0 tomli-2.0.1 yapf-0.40.1
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv                                                                                                                                                           
+                                                                                                                                                                                            
+┌──(root㉿kali)-[/home/kali]
+└─# >....                                                                                                                                                                                   
+if __name__ == '__main__':                    
+"""                                                                      
+This is where the application is first called                                      
+"""                                                               
+# print Banner          
+print("Welcome To Pentest Robot")
+print("###########################")                            
+print("Enter a single IP or Range in CIDR format (e.g.
+192.168.0.0/24):")
+# user input    
+cidr_input = input("IP/CIDR>")                                                  
+hosts = validate_input(cidr_input)                                                  
+For quality assurance, let's test the three scenario cases:             
+A single IP address input                                               
+A valid CIDR range input                          
+An invalid CIDR range input                                  
+Scenario 1: Single IP (expectation: no errors):   
+Welcome To Pentest Robot###########################                                                           
+Enter a single IP or Range in CIDR format (e.g. 192.168.0.0/24):       
+IP/CIDR>172.16.0.1       
+root@kali:~#               
+Scenario 2: Valid range of IPs (expectation: no errors):        
+Welcome To Pentest Robot       
+###########################
+Enter a single IP or Range in CIDR format (e.g. 192.168.0.0/24):
+IP/CIDR>172.16.0.0/24                                                           
+root@kali:~#                                                                        
+Scenario 3: Invalid CIDR format (expectation: an error message should print):
+Welcome To Pentest Robot                                                
+###########################                       
+Enter a single IP or Range in CIDR format (e.g. 192.168.0.0/24):
+IP/CIDR>172.16.0.1/24                             
+Invalid input! A valid CIDR IP range example: 192.168.0.0/24
+root@kali:~#
+Code Refactoring          
+A code refactoring methodology will make sure to avoid programming terrible
+practices (like copying the same code in multiple places, etc.). Programmers talk
+about this every day, so they develop clean source code. How can we apply this
+principle to our application? There are two things we can predict at this stage
+that we will need to centralize to avoid duplication:
+1. We will need to print a separator line in multiple places.
+2. We will need to execute commands in multiple places.
+We will create a class object called UTILITIES and add two methods that will
+cover the two scenarios:
+import subprocess             
+class UTILITIES:                  
+def __init__(self):                                        
+"""                      
+Class constructor       
+"""                        
+def separator_line(self): return               
+"#################################"
+zsh: parse error near `)'
+                                                                                                                                                                                            
+┌──(root㉿kali)-[/home/kali]
+└─# >....                                                                                                                                                                                   
+return                                                                          
+# Create the file object                                                     
+file_to_save = open(file_name_path, 'w')                                      
+# Write the changes                                                        
+file_to_save.write(results)                                        
+# Close file object                                                                  
+file_to_save.close()                                                          
+except:                                                        
+print("[!] Error: Cannot save the results to a file")                          
+Second, call the class methods from the main section of this application. Also,
+we will add some final touch to the main section:                                
+if __name__ == '__main__':                                                     
+"""                                         
+This is where the application is first called              
+"""                                       
+util = UTILITIES()                                                           
+# print Banner                                                                    
+print("Welcome To Pentest Robot")               
+print(util.separator_line())                        
+print("Enter a single IP or Range in CIDR format (e.g.
+192.168.0.0/24):")                                 
+# user input                                                            
+cidr_input = input("IP/CIDR>")      
+hosts = validate_input(cidr_input)              
+#if the CIDR value is valid                                     
+if (hosts != None):                             
+print("\n[i] Checking for Live Hosts...")       
+LIVE_HOSTS = []                              
+for host in hosts:scanner = HostScan(host)                      
+if (scanner.is_host_live()):                                      
+LIVE_HOSTS.append(host)                               
+print("\n")                                                                    
+#if we have live hosts                                                              
+if (len(LIVE_HOSTS)> 0):                                                         
+for live_host in LIVE_HOSTS:                                                     
+scanner_live_hosts = HostScan(live_host)                                        
+port_scan_results = scanner_live_hosts.port_scan()                                   
+parsed_nmap_results =                                                            
+scanner_live_hosts.parse_nmap_output(port_scan_results)                       
+enum = EnumerateHost(parsed_nmap_results, live_host)                            
+enum.start()                                                                        
+print(util.seperator_line())                                                     
+else:                                                                      
+print("[!] No live hosts to scan")                             
+print ("\n[*] Pentest Robot Finished The Execution!")                          
+Remember that you can download the full source code of this application on   
+GitHub at github.com/GusKhawaja/PentestRobot .                               
+Summary                                                                       
+What's next? You are the artist, and you should be able to create your application
+from here on. This chapter's main goal was to widen your view to encourage you   
+to be the next creator of a new Python application.             
